@@ -11,7 +11,6 @@ const Navbar = () => {
   const [color, setColor] = useState("transparent");
   const [textColor, setTextColor] = useState("white");
 
-
   const handleNav = () => {
     setNav(!nav);
   };
@@ -32,12 +31,12 @@ const Navbar = () => {
   return (
     <div
       style={{ backgroundColor: `${color}` }}
-      className="fixed left-0 top-0 w-full z-10 ease-in duration-300"
+      className="fixed mb-[50px] lg:mb-[100px] left-0 top-0 w-full z-10 ease-in duration-300"
     >
       <div className="max-w-[1240px] m-auto flex justify-between items-center p-4 text-yellow-400">
         <Link href="/">
           <h1 style={{ color: `${textColor}` }} className="font-bold text-4xl">
-            <span className="text-green-500">Velvet Hammer</span>
+            <span className="text-[#fca311]">VH</span>
           </h1>
         </Link>
         <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
@@ -55,9 +54,7 @@ const Navbar = () => {
           </li>
           <li className="p-4">
             <Link href="/news">
-                <p>News</p>
-                
-        
+              <p>News</p>
             </Link>
           </li>
         </ul>

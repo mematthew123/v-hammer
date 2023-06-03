@@ -1,94 +1,29 @@
-import {
-  GoogleMap,
-  LoadScript,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
-import { Key, useState } from "react";
-
-const mapStyles = {
-  height: "50vh",
-  width: "50%",
-};
-
-const defaultCenter = {
-  lat: 40.748817, // you may need to adjust these values to center the map to your preferred location
-  lng: -73.985428,
-};
-
-export interface LocationsProps {
-  locations: any;
-}
+import React from "react";
+import Map from "../components/map";
+import { LocationsProps } from "../components/map";
 
 const Locations: React.FC<LocationsProps> = ({ locations }) => {
-  const [selectedLocation, setSelectedLocation] = useState<{
-    name: string;
-    description: string;
-    locations: {
-      lat: number;
-      lng: number;
-      _key: Key | null | undefined;
-    }[];
-  } | null>(null);
-
   return (
-    <div className="mt-10 mb-10 mx-auto w-1/2 h-1/2">
-      <LoadScript googleMapsApiKey="AIzaSyD2_18EQyvbZ8JP-8WdEq3gu3EFz93VqL0">
-        <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={4}
-          center={defaultCenter}
-        >
-          {locations &&
-            locations.map(
-              (locationDoc: {
-                locations: {
-                  lat: number;
-                  lng: number;
-                  _key: Key | null | undefined;
-                }[];
-              }) => {
-                return locationDoc.locations.map(
-                  (location: {
-                    lat: number;
-                    lng: number;
-                    _key: Key | null | undefined;
-                  }) => {
-                    return (
-                      <Marker
-                        key={location._key}
-                        position={{
-                          lat: location.lat,
-                          lng: location.lng,
-                        }}
-                        onClick={() => {
-                          setSelectedLocation(locationDoc as any);
-                        }}
-                      />
-                    );
-                  }
-                );
-              }
-            )}
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white">
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-semibold text-gray-900">Our Locations</h1>
+        <p className="mt-4 text-lg text-gray-600">
+          Find us in the following locations
+        </p>
+      </div>
 
-          {selectedLocation && (
-            <InfoWindow
-              position={{
-                lat: selectedLocation.locations[0].lat,
-                lng: selectedLocation.locations[0].lng,
-              }}
-              onCloseClick={() => {
-                setSelectedLocation(null);
-              }}
-            >
-              <div>
-                <h2>{selectedLocation.name}</h2>
-                <p>{selectedLocation.description}</p>
-              </div>
-            </InfoWindow>
-          )}
-        </GoogleMap>
-      </LoadScript>
+      <div className="bg-white shadow overflow-hidden sm:rounded-md">
+        <Map locations={locations} />
+      </div>
+
+      <div className="mt-10">
+        {locations.map((location) => (
+          <div key={location._id} className="mb-4">
+            <h2 className="text-2xl font-semibold">{location.name}</h2>
+            <p className="text-gray-600">{location.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
