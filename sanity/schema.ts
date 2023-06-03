@@ -11,5 +11,5 @@ import business from './schemas/business'
 
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, category, blockContent,products,collections, author, locations,business     ],
+  types: [post, category, blockContent,products,collections, author, locations,business ],
 }
