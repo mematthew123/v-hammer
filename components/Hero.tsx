@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
       <button className="px-8 py-3 text-2xl text-deepBlue bg-gold rounded-lg shadow-lg font-semibold">
         Our Products
       </button>
-      <button className="w-12 h-12 mt-6 border-2 border-platinum rounded-full animate-bounce">
+      <button className=" z-0 w-12 h-12 mt-6 border-2 border-platinum rounded-full animate-bounce">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
