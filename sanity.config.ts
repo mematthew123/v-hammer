@@ -20,7 +20,7 @@ export default defineConfig({
   schema,
   plugins: [
     googleMapsInput({
-      apiKey: "AIzaSyD2_18EQyvbZ8JP-8WdEq3gu3EFz93VqL0",
+      apiKey: "AIzaSyBdIJzRrBBSWIcTTL9Lr9UFEc7ikn3QoNY",
       
  }),
     deskTool(),
