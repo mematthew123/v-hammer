@@ -1,29 +1,14 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "product",
-  title: "Product",
+  name: "wholeSaleProducts",
+  title: "Whole Sale Products",
   type: "document",
   fields: [
     defineField({
       name: "title",
       title: "Title",
       type: "string",
-    }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "title",
-        maxLength: 96,
-      },
-    }),
-    defineField({
-      name: "featured",
-      title: "Featured Product",
-      type: "boolean",
-      description: "Mark this checkbox if the product is a featured product"
     }),
     defineField({
       name: "description",
@@ -36,14 +21,16 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "terpenes",
-      title: "Terpenes",
-      type: "string",
+      name: "ingredients",
+      title: "Ingredients",
+      type: "array",
+      of: [{ type: "string" }],
     }),
     defineField({
-      name:'ingredients',
-      title:'Ingredients',
-      type:'string'
+      name: "terpenes",
+      title: "Terpenes",
+      type: "array",
+      of: [{ type: "string" }],
     }),
     defineField({
       name: "thc",
@@ -82,18 +69,5 @@ export default defineType({
         },
       ],
     }),
-    defineField({
-      name: "collections",
-      title: "Collections",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "collections" }] }], 
-    }),
   ],
-
-  preview: {
-    select: {
-      title: "title",
-      media: "images[0]",
-    },
-  },
 });

@@ -3,13 +3,13 @@ import { Product } from "@/interfaces/product.interface";
 import { client } from "../sanity/lib/client";
 import ProductCard from "./ProductCard";
 
-const ProductList: React.FC = () => {
+const WholeSaleList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       const productsData = await client.fetch(`
-        *[_type == "product"]{
+        *[_type == "wholeSaleProducts"]{
           _id,
           title,
           description,
@@ -30,7 +30,7 @@ const ProductList: React.FC = () => {
   }, []);
 
   return (
-    <div className=" mt-6 py-2  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className=" mt-6 py-2 items-center  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {products.map((product) => (
         <ProductCard key={product._id} product={product} />
       ))}
@@ -38,4 +38,4 @@ const ProductList: React.FC = () => {
   );
 };
 
-export default ProductList;
+export default WholeSaleList;

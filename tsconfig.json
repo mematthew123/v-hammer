@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "deskStructure.js", "sanity/schemas/siteSettings.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "deskStructure.js", "sanity/schemas/siteSettings.js", "utils/session.js"],
   "exclude": ["node_modules"]
 }
